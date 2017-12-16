@@ -15,6 +15,8 @@ public class SlotMachine implements MouseListener {
 	JLabel label2 = new JLabel("R3");
 	JButton spin = new JButton();
 	JLabel slotLabel = new JLabel();
+	JLabel winLabel = new JLabel();
+	boolean win = false; 
 
 	public static void main(String[] args) {
 		SlotMachine sm = new SlotMachine();
@@ -25,7 +27,7 @@ public class SlotMachine implements MouseListener {
 	// }
 
 	public SlotMachine() {
-		spin.setText("SPIN");
+		spin.setText("SPIN TO WIN");
 		spin.addMouseListener(this);
 		frame.setSize(1000, 268);
 		panel.add(spin);
@@ -36,7 +38,8 @@ public class SlotMachine implements MouseListener {
 		panel.add(label1);
 		panel.add(label2);
 		panel.add(slotLabel);
-
+		panel.add(winLabel);
+		
 		frame.add(panel);
 		frame.setVisible(true);
 
@@ -53,7 +56,7 @@ public class SlotMachine implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 
 		// TODO Auto-generated method stub
-
+		winLabel.setVisible(false);
 		for (int i = 0; i < 3; i++) {
 			int ran = new Random().nextInt(3);
 
@@ -61,7 +64,7 @@ public class SlotMachine implements MouseListener {
 				String bananaImage = "banana.png";
 
 				if (i == 0) {
-					label.setText("banana");
+					label.setText("bananna");
 
 				} else if (i == 1) {
 					label1.setText("bananna");
@@ -94,7 +97,20 @@ public class SlotMachine implements MouseListener {
 					label2.setText("orange");
 				}
 			}
-
+		
+			}
+		if(label.getText().equals("cherry")&&label1.getText().equals("cherry")&&label2.getText().equals("cherry")) {
+			winLabel.setVisible(true);
+			winLabel.setText("YOU WIN");
+		}
+		if(label.getText().equals("orange")&&label1.getText().equals("orange")&&label2.getText().equals("orange")) {
+			winLabel.setVisible(true);
+			winLabel.setText("YOU WIN");
+		}
+		if(label.getText().equals("bananna")&&label1.getText().equals("bananna")&&label2.getText().equals("bananna")) {
+			winLabel.setVisible(true);
+		winLabel.setText("YOU WIN");	
+	
 		}
 	}
 
